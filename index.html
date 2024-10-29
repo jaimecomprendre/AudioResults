@@ -7,10 +7,26 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
             background-color: #f5f5f5;
+        }
+        .page-title {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+        }
+        .column {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .audio-container {
             background: white;
@@ -18,10 +34,6 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 20px;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
         }
         audio {
             width: 100%;
@@ -35,48 +47,76 @@
     </style>
 </head>
 <body>
-    <h1>Audio Examples</h1>
-    <p>This page demonstrates different audio processing examples, comparing the original input, which is out of our training set, with various output versions including results from Pedalboard processing and our custom model implementations.</p>
-    <p>We took care of applying a zero padding to our input to be able to capture the tail of the reverb, as we do in our preprocessing.</p>
+    <h1 class="page-title">Audio Examples</h1>
     
-    <div class="audio-container">
-        <div class="file-name">Input audio file</div>
-        <audio controls>
-            <source src="Input.wav" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
+    <div class="content-wrapper">
+        <!-- Left Column -->
+        <div class="column">
+            <h2>Test set audio file</h2>
+            <p>This section shows the output of our model for a test set audio file</p>
+            <div class="audio-container">
+                <div class="file-name">Input.wav</div>
+                <audio controls>
+                    <source src="input_shhshd.wav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
 
-    <div class="audio-container">
-        <div class="file-name">Real output obtained with Pedalboard</div>
-        <audio controls>
-            <source src="Output with pedalboard.wav" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
+            <div class="audio-container">
+                <div class="file-name">Model output</div>
+                <audio controls>
+                    <source src="processed_shhshd.wav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
 
-    <div class="audio-container">
-        <div class="file-name">Output from our model</div>
-        <audio controls>
-            <source src="Output from model.wav" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
-<!-- 
-    <div class="audio-container">
-        <div class="file-name">Output when PCA</div>
-        <audio controls>
-            <source src="Output from model no PCA.wav" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </div> -->
+            <div class="audio-container">
+                <div class="file-name">Pedalboard</div>
+                <audio controls>
+                    <source src="result.wav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
 
-    <div class="audio-container">
-        <div class="file-name">Output from our model with PCA and strong modulation on the first PCA channel</div>
-        <audio controls>
-            <source src="Output modulated.wav" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+        <!-- Right Column -->
+        <div class="column">
+            <p>This section demonstrates different audio processing examples, comparing the original input, which is out of our training set,
+                with various output versions including results from Pedalboard processing and our custom model implementations.</p>
+            <p>We took care of applying a zero padding to our input to be able to capture the tail of the reverb, as we do in our preprocessing.</p>
+            
+            <div class="audio-container">
+                <div class="file-name">Input audio file</div>
+                <audio controls>
+                    <source src="Input.wav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-container">
+                <div class="file-name">Real output obtained with Pedalboard</div>
+                <audio controls>
+                    <source src="Output with pedalboard.wav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-container">
+                <div class="file-name">Output from our model</div>
+                <audio controls>
+                    <source src="Output from model.wav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-container">
+                <div class="file-name">Output from our model with PCA and strong modulation on the first PCA channel</div>
+                <audio controls>
+                    <source src="Output modulated.wav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
     </div>
 </body>
 </html>
